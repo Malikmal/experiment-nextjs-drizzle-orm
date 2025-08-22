@@ -1,3 +1,4 @@
+import { ContactRequest, contactSchema } from "@/apimodels/contact-request";
 import { db } from "@/db/db";
 import { messages } from "@/db/schema";
 
@@ -11,7 +12,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const data = await request.json();
+  const data: ContactRequest = await request.json();
+
+  contactSchema.parse(data);
+
   const message = await db.insert(messages).values({
     id: crypto.randomUUID(),
     name: data.name,

@@ -13,9 +13,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ContactRequest, contactSchema } from "@/apimodels/contact-request";
 
 export default function Home() {
-  const form = useForm({
+  const form = useForm<ContactRequest>({
+    resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "", // "name 001",
       email: "", // "email-001@gmail.com",
@@ -23,7 +26,7 @@ export default function Home() {
     },
   });
 
-  async function handleSubmit(data: any) {
+  async function handleSubmit(data: ContactRequest) {
     console.log({ data });
 
     const response = await fetch("/api/contact", {

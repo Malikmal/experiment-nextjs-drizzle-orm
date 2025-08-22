@@ -1,4 +1,5 @@
 import { pgTable, uuid, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
 
 export const messages = pgTable("messages", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -7,3 +8,5 @@ export const messages = pgTable("messages", {
   message: text("message").notNull(),
   created_at: timestamp("created_at").defaultNow(),
 });
+
+export const messageInsertSchema = createInsertSchema(messages);

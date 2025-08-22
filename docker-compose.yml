@@ -13,9 +13,9 @@ services:
       POSTGRES_DB: contacts
     ports:
       - "5432:5432"
-  drizzle-studio:
-    image: "huakunshen/drizzle-studio-docker:latest"
-    ports:
-      - "3020:3020"
-    environment:
-      - DATABASE_URL=${DATABASE_URL}
+  # drizzle-studio:
+  #   image: "huakunshen/drizzle-studio-docker:latest"
+  #   ports:
+  #     - "3020:3020"
+  #   environment:
+  #     - DATABASE_URL=${DATABASE_URL}

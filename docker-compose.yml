@@ -1,0 +1,21 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+  postgresql:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: contacts
+    ports:
+      - "5432:5432"
+  drizzle-studio:
+    image: "huakunshen/drizzle-studio-docker:latest"
+    ports:
+      - "3020:3020"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}

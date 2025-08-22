@@ -22,6 +22,7 @@ export default function Home() {
     defaultValues: {
       name: "", // "name 001",
       email: "", // "email-001@gmail.com",
+      subject: "", // "Quotation of blablabla",
       message: "", // "message",
     },
   });
@@ -82,6 +83,19 @@ export default function Home() {
                     <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="Email" type="email" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              ></FormField>
+              <FormField
+                control={form.control}
+                name="subject"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Subject</FormLabel>
+                    <FormControl>
+                      <Input {...field} placeholder="Subject" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

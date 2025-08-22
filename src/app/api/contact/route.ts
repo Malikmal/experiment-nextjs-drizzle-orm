@@ -19,6 +19,7 @@ export async function POST(request: Request) {
   const message = await db.insert(messages).values({
     id: crypto.randomUUID(),
     name: data.name,
+    subject: data.subject,
     email: data.email,
     message: data.message,
     created_at: new Date(),

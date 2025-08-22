@@ -51,7 +51,7 @@ export default function Home() {
 
   return (
     <main className="h-screen w-screen grid place-items-center p-4">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-lg">
         <CardHeader>
           <h1 className="text-2xl font-bold">Contact Us</h1>
           <p className="text-muted-foreground">We'd love to hear from you!</p>
@@ -60,7 +60,7 @@ export default function Home() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(handleSubmit)}
-              className="flex flex-col gap-4"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
             >
               <FormField
                 control={form.control}
@@ -92,7 +92,7 @@ export default function Home() {
                 control={form.control}
                 name="subject"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="col-span-full">
                     <FormLabel>Subject</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="Subject" />
@@ -105,7 +105,7 @@ export default function Home() {
                 control={form.control}
                 name="message"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="col-span-full">
                     <FormLabel>Message</FormLabel>
                     <FormControl>
                       <Textarea
@@ -117,7 +117,11 @@ export default function Home() {
                   </FormItem>
                 )}
               ></FormField>
-              <Button type="submit" disabled={form.formState.isSubmitting}>
+              <Button
+                type="submit"
+                disabled={form.formState.isSubmitting}
+                className="col-span-full"
+              >
                 {form.formState.isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>

@@ -55,12 +55,12 @@ export default function Home() {
       <div className="h-screen w-screen absolute inset-0 -z-10">
         <DarkVeil />
       </div>
-      <Card className="w-full max-w-lg">
+      <Card className="w-full max-w-lg bg-white/10 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 text-white placeholder:text-white ">
         <CardHeader>
           <h1 className="text-2xl font-bold">Contact Us</h1>
           <p className="text-muted-foreground">We'd love to hear from you!</p>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4">
+        <CardContent className="flex flex-col gap-6">
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(handleSubmit)}

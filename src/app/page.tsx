@@ -15,6 +15,7 @@ import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ContactRequest, contactSchema } from "@/apimodels/contact-request";
+import DarkVeil from "@/backgrounds/DarkVeil/DarkVeil";
 
 export default function Home() {
   const form = useForm<ContactRequest>({
@@ -51,6 +52,9 @@ export default function Home() {
 
   return (
     <main className="h-screen w-screen grid place-items-center p-4">
+      <div className="h-screen w-screen absolute inset-0 -z-10">
+        <DarkVeil />
+      </div>
       <Card className="w-full max-w-lg">
         <CardHeader>
           <h1 className="text-2xl font-bold">Contact Us</h1>

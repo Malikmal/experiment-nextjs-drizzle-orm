@@ -17,9 +17,9 @@ import { toast, ToastContainer } from "react-toastify";
 export default function Home() {
   const form = useForm({
     defaultValues: {
-      name: "name 001",
-      email: "email-001@gmail.com",
-      message: "message",
+      name: "", // "name 001",
+      email: "", // "email-001@gmail.com",
+      message: "", // "message",
     },
   });
 
@@ -34,7 +34,7 @@ export default function Home() {
       },
     });
 
-    if (response.status !== 200) {
+    if (response.status !== 201) {
       const errorData = await response.json();
       toast.error(`Failed to send message: ${errorData.message}`);
       console.log("Error:", errorData);
@@ -42,6 +42,7 @@ export default function Home() {
     }
 
     toast.success("Message sent successfully!");
+    form.reset();
   }
 
   return (
@@ -49,6 +50,7 @@ export default function Home() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <h1 className="text-2xl font-bold">Contact Us</h1>
+          <p className="text-muted-foreground">We'd love to hear from you!</p>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <Form {...form}>
@@ -98,7 +100,9 @@ export default function Home() {
                   </FormItem>
                 )}
               ></FormField>
-              <Button type="submit">Send Message</Button>
+              <Button type="submit" disabled={form.formState.isSubmitting}>
+                {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
             </form>
           </Form>
         </CardContent>
